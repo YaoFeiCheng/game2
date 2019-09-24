@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        canvas{
+            position: absolute;
+            z-index: 0;
+            cursor: url("images/p.ico") auto;
+            background: url("images/space.jpg");
+        }
+       #score{
+            position: absolute;
+            z-index: 1;
+            color: white;
+            font-size: 30px;
+            left: 20px;
+        }
+       #over{
+           width: 100%;
+           height: 100%;
+           position: absolute;
+           background-image: url("images/bg.png");
+       }
+       #explosion{
+           position: absolute;
+           margin-left: 700px;
+           margin-top: 300px;
+       }
+       #reStart{
+           font-size: 50px;
+           font-family: 华文楷体;
+           margin-left: 250px;
+           color: yellow;
+           animation: click 2s infinite;
+       }
+        #begin{
+            width: 100%;
+            height: 100%;
+            background-image: url("images/bg.png");
+            transform-style: preserve-3d;
+            position: absolute;
+            overflow: hidden;
+        }
+        #gameStar{
+            font-size: 50px;
+            font-family: 华文楷体;
+            margin-left: 700px;
+            color: yellow;
+            animation: click 2s infinite;
+        }
+        #starWar{
+            position: absolute;
+            margin-left: 700px;
+            margin-top: 200px;
+        }
+        #words{
+            position: absolute;
+            margin: 100px;
+            animation: move 20s both;
+        }
+        @keyframes move {
+            0%{transform: translateX(400px) translateY(800px) scale(1.5)}
+            100%{transform: translateX(400px) translateY(300px) scale(0)}
+        }
+        @keyframes click {
+            0%{opacity: 0}
+            50%{opacity: 1}
+            100%{opacity: 0}
+        }
+        @keyframes ex {
+            0%{transform: translateX(0px)}
+            100%{transform: translateX(2048px)}
+        }
+    </style>
+</head>
+<body>
+<canvas id = 'cvs' height="950" width="1920" style="border: 1px solid black;background-color: aqua;"></canvas>
+<div id="score">score: <span>0</span></div>
+
+<dialog id="begin" open>
+    <div id="gameStar">点击任意位置开始游戏</div>
+    <div id="starWar">
+        <img src="images/starwar.jpg" alt="">
+    </div>
+    <div id="words">
+        <img src="images/start.png" alt="">
+    </div>
+</dialog>
+
+<dialog id="over" >
+    <div id="reStart">星球爆炸，问题不大，是否再次挑战？（点击任意位置继续）</div>
+    <div id="explosion"><img src="images/boom.gif" alt=""></div>
+</dialog>
+
+<script>
+    var begin = document.getElementById('begin');
+    begin.onclick = function () {
+        begin.open = false;
+        start()
+    };
+
+
+</script>
+
+<script src="game.js"></script>
+</body>
+</html>
